@@ -338,11 +338,21 @@ footer {
   }
 }
 
+.university-name {
+  font-size: 20px;
+  padding-top: 10px;
+  color: #333;
+  font-weight: bold;
+  display: inline-block;
+}
+
 .university-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   padding: 20px;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .university-item {
@@ -356,15 +366,9 @@ footer {
 
     .university-image {
       width: 100%;
-      height: auto;
+      height: 300px;
+      object-fit: cover;
       border-radius: 0px;
-    }
-
-    .university-name {
-      font-size: 20px;
-      margin: 10px 0;
-      color: #333;
-      display: inline-block;
     }
 
     .social-icons {
@@ -437,6 +441,10 @@ footer {
 
   .university-item {
     width: 100%; /* 각 항목이 전체 너비를 차지하도록 설정 */
+  }
+
+  .university-image {
+    height: 200px !important;
   }
 }
 
