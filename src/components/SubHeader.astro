@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+const { title, description, imageUrl } = Astro.props;
+import favicon from "../../public/favicon.svg";
+---
+
+<div class="subheader">
+  <img class="subheader-image" src={imageUrl} alt="" />
+  <h1>{title}</h1>
+  <div class="subheader-text-bg"></div>
+</div>
+
+<style>
+  .subheader {
+    position: relative;
+    width: 100%;
+  }
+
+  .subheader-image {
+    width: 100%;
+    opacity: 0.4;
+    object-fit: cover;
+    height: 200px;
+  }
+
+  .subheader h1 {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.723);
+    font-weight: bold;
+    font-size: 30px;
+    left: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+  }
+
+  .subheader-text-bg {
+    position: absolute;
+    top: 58%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 340px;
+    height: 15px;
+    background-color: white;
+    opacity: 0.7;
+    z-index: 99;
+  }
+</style>

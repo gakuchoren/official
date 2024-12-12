@@ -1,19 +1,23 @@
 ---
+import SubHeader from "@/components/SubHeader.astro";
 import Layout from "@/layouts/Layout.astro";
 const title = "加盟大学";
 const description = "全日本釣魚連盟に加盟している大学の一覧を紹介します。";
 const og_image = "public/images/university1.png";
-import { getUniversities } from "@/lib/microcms";
+import { getUniversities,getTopImages } from "@/lib/microcms";
 const response = await getUniversities({ fields: ["id", "name", "content", "description", "image", "link_instagram", "link_x", "link_homepage", "link_welcome", "createdAt"] });
 const universities = Array.from(response.contents);
+const responseTopImages = await getTopImages({fields:["universities"]})
+const topImage = responseTopImages.contents[0].universities;
 ---
 
 <Layout title={title} description={description} og_image={og_image}>
   <main class="universities-main">
     <!--배경 -->
-    <section class="universities-header">
+    <!-- <section class="universities-header">
       <h1>加盟大学</h1>
-    </section>
+    </section> -->
+    <SubHeader title="加盟大学" imageUrl={topImage.url}/>
 
     <!-- 대학 리스트 -->
     <section class="university-list">

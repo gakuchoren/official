@@ -2,11 +2,16 @@
 // 絶対パスで
 // 画像はsrc/pages内の各ディレクトリにimagesフォルダを作成する
 import Layout from "@/layouts/Layout.astro";
+import SubHeader from "@/components/SubHeader.astro";
 import "@/scss/styles.scss";
 const title = "";
 const description = "";
 const og_image = "";
-import { getTournaments, getTournamentDetail } from "@/lib/microcms";
+import {
+  getTournaments,
+  getTournamentDetail,
+  getTopImages,
+} from "@/lib/microcms";
 
 export async function getStaticPaths() {
   const response = await getTournaments();
@@ -18,15 +23,19 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const tournament = await getTournamentDetail(id);
+
+const responseTopImage = await getTopImages({ fields: ["tournaments"] });
+const topImage = responseTopImage.contents[0].tournaments;
 ---
 
 <Layout title={title} , description={description} og_image={og_image}>
   <main>
-    <section id="">
+    <!-- <section id="">
       <div class="p-detail-main">
         <h1 class="p-detail-main-title">{tournament.title}</h1>
       </div>
-    </section>
+    </section> -->
+    <SubHeader title={tournament.title} imageUrl={topImage.url} />
 
     <section>
       <div class="p-detail-sentence">

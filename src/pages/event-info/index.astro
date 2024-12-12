@@ -1,7 +1,8 @@
 ---
 import Search from "@/components/Search.astro";
+import SubHeader from "@/components/SubHeader.astro";
 import Layout from "@/layouts/Layout.astro";
-import { getEvents } from "@/lib/microcms";
+import { getEvents, getTopImages } from "@/lib/microcms";
 import type { Event } from "@/lib/microcms";
 
 const title = "イベント情報";
@@ -39,18 +40,23 @@ const groupedEvents = events.reduce<Record<string, Event[]>>(
 const sortedMonths = Object.keys(groupedEvents).sort((a, b) =>
   b.localeCompare(a)
 );
+
+const responseTopImage = await getTopImages({ fields: ["events"] });
+const topImage = responseTopImage.contents[0].events;
 ---
 
 <Layout title={title} description={description} og_image={og_image}>
   <main class="event-main">
     <!-- 헤더 -->
-    <section class="event-header">
+    <!-- <section>
       <h1>イベント情報</h1>
-      <div class="search-box">
+      <img src={topImage.url} class="event-header" alt="" />
+      <!-- <div class="search-box">
         <Search />
-        <!-- <input type="text" placeholder="検索" /> -->
-      </div>
-    </section>
+        <input type="text" placeholder="検索" />
+      </div> 
+    </section> -->
+    <SubHeader title="イベント情報" imageUrl={topImage.url} />
 
     <!-- 콘텐츠 -->
     <section class="event-content">

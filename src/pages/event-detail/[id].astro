@@ -6,7 +6,8 @@ import "@/scss/styles.scss";
 const title = "";
 const description = "";
 const og_image = "";
-import { getEvents, getEventDetail } from "@/lib/microcms";
+import { getEvents, getEventDetail, getTopImages } from "@/lib/microcms";
+import SubHeader from "@/components/SubHeader.astro";
 
 export async function getStaticPaths() {
   const response = await getEvents();
@@ -18,15 +19,18 @@ export async function getStaticPaths() {
 
 const { id } = Astro.params;
 const event = await getEventDetail(id);
+const responseTopImage = await getTopImages({ fields: ["events"] });
+const topImage = responseTopImage.contents[0].events;
 ---
 
 <Layout title={title} , description={description} og_image={og_image}>
   <main>
-    <section>
+    <!-- <section>
       <div class="p-Ivent-main">
         <h1 class="p-Ivent-main-title">{event.title}</h1>
       </div>
-    </section>
+    </section> -->
+    <SubHeader title={event.title} imageUrl={topImage.url} />
     <section>
       <div class="p-Ivent-sentence">
         <p>{event.content}</p>

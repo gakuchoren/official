@@ -2,7 +2,8 @@
 import Layout from "@/layouts/Layout.astro";
 import "@/scss/styles.scss";
 import TournamentComponent from "@/components/Tournament .astro";
-import { getTournaments } from "@/lib/microcms";
+import SubHeader from "@/components/SubHeader.astro";
+import { getTournaments, getTopImages } from "@/lib/microcms";
 import type { Tournament } from "@/lib/microcms";
 
 const title: string = "大会情報";
@@ -41,17 +42,21 @@ const groupedTournaments = tournaments.reduce<Record<string, Tournament[]>>(
 const sortedMonths = Object.keys(groupedTournaments).sort((a, b) =>
   b.localeCompare(a)
 );
+
+const responseTopImage = await getTopImages({ fields: ["tournaments"] });
+const topImage = responseTopImage.contents[0].tournaments;
 ---
 
 <Layout title={title} description={description} og_image={og_image}>
   <main>
     <section id="">
-      <div class="p-information">
+      <SubHeader title="大会情報" imageUrl={topImage.url} />
+      <!-- <div class="p-information">
         <h1 class="p-information-title">大会情報</h1>
-        <div class="p-information-search">
+        <!-- <div class="p-information-search">
           <p class="">検索</p>
-        </div>
-      </div>
+        </div> 
+      </div> -->
     </section>
     <div class="p-line">
       <div class="p-line-top"></div>

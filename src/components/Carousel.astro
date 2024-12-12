@@ -1,10 +1,13 @@
 ---
-import { Image } from 'astro:assets'
-import slide01 from '/public/assets/beautiful-landscape-mountain-fuji-around-yamanakako-lake_74190-3031.avif'
-import slide02 from '/public/assets/Redsugar0405002_TP_V4.webp'
-import slide03 from '/public/assets/yudai_509s0003_TP_V4.webp'
-import slide04 from '/public/assets/yudai_509s0055_TP_V4.webp'
-import slide05 from '/public/assets/yuta12-049_TP_V4.webp'
+import { Image } from "astro:assets";
+import slide01 from "/public/assets/beautiful-landscape-mountain-fuji-around-yamanakako-lake_74190-3031.avif";
+import slide02 from "/public/assets/Redsugar0405002_TP_V4.webp";
+import slide03 from "/public/assets/yudai_509s0003_TP_V4.webp";
+import slide04 from "/public/assets/yudai_509s0055_TP_V4.webp";
+import slide05 from "/public/assets/yuta12-049_TP_V4.webp";
+import { getTopImages } from "@/lib/microcms";
+const response = await getTopImages({ fields: ["carousel"] });
+const carouselImages = response.contents[0].carousel;
 ---
 
 <!-- Slider main container -->
@@ -12,11 +15,28 @@ import slide05 from '/public/assets/yuta12-049_TP_V4.webp'
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
-    <div class="swiper-slide"><Image class="swiper-slide-image" src={slide01} alt="" /></div>
-    <div class="swiper-slide"><Image class="swiper-slide-image"  src={slide02} alt="" /></div>
-    <div class="swiper-slide"><Image class="swiper-slide-image"  src={slide03} alt="" /></div>
-    <div class="swiper-slide"><Image class="swiper-slide-image"  src={slide04} alt="" /></div>
-    <div class="swiper-slide"><Image class="swiper-slide-image"  src={slide05} alt="" /></div>
+    {
+      carouselImages.map((image) => {
+        return (
+          <div class="swiper-slide">
+            <img class="swiper-slide-image" src={image.url} alt="" />
+          </div>
+        );
+      })
+    }
+
+    <!-- <div class="swiper-slide">
+      <Image class="swiper-slide-image" src={slide02} alt="" />
+    </div>
+    <div class="swiper-slide">
+      <Image class="swiper-slide-image" src={slide03} alt="" />
+    </div>
+    <div class="swiper-slide">
+      <Image class="swiper-slide-image" src={slide04} alt="" />
+    </div>
+    <div class="swiper-slide">
+      <Image class="swiper-slide-image" src={slide05} alt="" />
+    </div> -->
   </div>
   <!-- If we need pagination -->
   <div class="swiper-pagination"></div>
@@ -65,32 +85,37 @@ import slide05 from '/public/assets/yuta12-049_TP_V4.webp'
 </style>
 
 <script>
-  import Swiper from 'swiper'
-  import { Navigation, Pagination } from 'swiper/modules'
-  import 'swiper/css/bundle'
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import "swiper/css/bundle";
 
   export const swiperConfig = {
-    modules: [Navigation, Pagination],
+    modules: [Navigation, Pagination, Autoplay],
     // Optional parameters
     loop: true,
+    autoplay: {
+      delay: 0,
+    },
+    speed: 3500, //追記
+    slidesPerView: 1,
 
     // If we need pagination
     pagination: {
-      el: '.swiper-pagination',
+      el: ".swiper-pagination",
       clickable: true,
     },
 
     // Navigation arrows
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
 
     // And if we need scrollbar
     scrollbar: {
-      el: '.swiper-scrollbar',
+      el: ".swiper-scrollbar",
     },
-  }
+  };
 
-  const swiper = new Swiper('.swiper', swiperConfig)
+  const swiper = new Swiper(".swiper", swiperConfig);
 </script>
