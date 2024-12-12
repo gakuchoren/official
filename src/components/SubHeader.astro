@@ -18,18 +18,19 @@ import favicon from "../../public/favicon.svg";
 
   .subheader-image {
     width: 100%;
-    opacity: 0.4;
+    opacity: 0.3;
     object-fit: cover;
     height: 200px;
   }
 
   .subheader h1 {
     position: absolute;
-    color: rgba(0, 0, 0, 0.723);
+    color: black;
     font-weight: bold;
     font-size: 30px;
     left: 100px;
     top: 50%;
+    margin-right: 100px;
     transform: translateY(-50%);
     z-index: 100;
   }
@@ -42,7 +43,29 @@ import favicon from "../../public/favicon.svg";
     width: 340px;
     height: 15px;
     background-color: white;
-    opacity: 0.7;
+    opacity: 0.8;
     z-index: 99;
+  }
+
+  @media screen and (max-width: 768px) {
+    .subheader-image {
+      height: 130px;
+    }
+
+    .subheader-image {
+      opacity: 0.2;
+    }
+
+    .subheader h1 {
+      position: absolute;
+      color: black;
+      left: 30px;
+      font-size: 25px;
+      margin-right: 30px;
+    }
+
+    .subheader-text-bg {
+      display: none;
+    }
   }
 </style>

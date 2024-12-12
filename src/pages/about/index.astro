@@ -25,6 +25,11 @@ const topImage = responseTopImage.contents[0].about;
       <!-- 첫 번째 단락 -->
       <div class="about-item">
         <!-- <div class="image-placeholder highlight"></div> -->
+        <p>{about.content}</p>
+      </div>
+
+      <!-- 두 번째 단락 -->
+      <div class="about-item 2">
         {
           about.images[0] && (
             <img
@@ -34,11 +39,6 @@ const topImage = responseTopImage.contents[0].about;
             />
           )
         }
-        <p>{about.content}</p>
-      </div>
-
-      <!-- 두 번째 단락 -->
-      <div class="about-item 2">
         {
           about.images[1] && (
             <img

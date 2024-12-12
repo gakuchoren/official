@@ -29,12 +29,17 @@ const topImage = responseTopImages.contents[0].universities;
           <div class="image-wrapper">
             <img src={university.image.url} alt={university.name} class="university-image" />
             <div class="social-icons">
-              <a href={university.link_instagram} target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-              <a href={university.link_x} target="_blank" rel="noopener noreferrer">
-                <i class="fa-brands fa-twitter"></i>
-              </a>
+              {university.link_instagram && 
+                 <a href={university.link_instagram} target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              }
+              {university.link_x && 
+                 <a href={university.link_instagram} target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+              }
+            
             </div>
           </div>
 
@@ -45,9 +50,16 @@ const topImage = responseTopImages.contents[0].universities;
 
           <!-- 링크 -->
           <div class="university-links">
-            <a href={university.link_homepage} target="_blank" rel="noopener noreferrer" class="hp-link">ホームページはこちら</a>
+            {university.link_homepage && 
+                 <a href={university.link_homepage} target="_blank" rel="noopener noreferrer" class="hp-link">ホームページはこちら</a>
+              }
+
+              {university.link_welcome && 
+                 <a href={university.link_welcome} target="_blank" rel="noopener noreferrer" class="welcome-link">新歓情報はこちら</a>
+              } 
+            
             <div class="link-row">
-             <a href={university.link_welcome} target="_blank" rel="noopener noreferrer" class="welcome-link">新歓情報はこちら</a>
+             
              <a href={`/official/university-detail/${university.id}`} target="_blank" rel="noopener noreferrer" class="details-link">詳しく見る&gt;&gt;</a>
           </div>
           </div>

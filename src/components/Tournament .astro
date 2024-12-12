@@ -16,7 +16,7 @@ const { title, content, id } = Astro.props;
   .tournament-component {
     gap: 20px;
     border-radius: 5px;
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
   }
 
@@ -93,6 +93,10 @@ const { title, content, id } = Astro.props;
   @media screen and (max-width: 768px) {
     .close-btn {
       display: none;
+    }
+
+    .tournament-component {
+      width: 100%;
     }
 
     .tournament-component-title {
