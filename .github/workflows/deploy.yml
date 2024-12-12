@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     types: [update_post]
   repository_dispatch:
-    types: [update_post]
+    types: [microcms]
 
 jobs:
   build:
