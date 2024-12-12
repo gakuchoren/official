@@ -1,9 +1,9 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import "../../scss/styles.scss";
-import TournamentComponent from "../../components/Tournament .astro";
-import { getTournaments } from "../../lib/microcms";
-import type { Tournament } from "../../lib/microcms";
+import Layout from "@/layouts/Layout.astro";
+import "@/scss/styles.scss";
+import TournamentComponent from "@/components/Tournament .astro";
+import { getTournaments } from "@/lib/microcms";
+import type { Tournament } from "@/lib/microcms";
 
 const title: string = "大会情報";
 const description: string = "";
@@ -64,7 +64,7 @@ const sortedMonths = Object.keys(groupedTournaments).sort((a, b) =>
       <div class="p-content-sentence">
         <div class="p-content-sentence-every">
           {
-            sortedMonths.map(month => (
+            sortedMonths.map((month) => (
               <div class="month-section">
                 <h2 id={month} class="tournament-month-section-title">
                   {month}
@@ -86,7 +86,7 @@ const sortedMonths = Object.keys(groupedTournaments).sort((a, b) =>
           <p class="p-content-sentence-archive-title">月別アーカイブ</p>
           <div class="p-content-sentence-archive-everyday">
             {
-              sortedMonths.map(month => (
+              sortedMonths.map((month) => (
                 <p class="p-content-sentence-archive-day">
                   <a href={`#${month}`}>
                     {month}({groupedTournaments[month].length})

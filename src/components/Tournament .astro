@@ -5,7 +5,9 @@ const { title, content, id } = Astro.props;
 <div class="tournament-component">
   <h1 class="tournament-component-title">{title}</h1>
   <p class="shortened-text">{content}</p>
-  <a class="read-more-btn" href={`/tournament-detail/${id}`}>続きを読む>></a>
+  <a class="read-more-btn" href={`/official/tournament-detail/${id}`}
+    >続きを読む>></a
+  >
   <button class="close-btn" style="display: none;">閉じる>></button>
   <hr />
 </div>
