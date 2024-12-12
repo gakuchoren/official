@@ -1,13 +1,13 @@
 ---
 import Tournament from "./Tournament .astro";
 
-const { title, content , tournament} = Astro.props;
+const { title, content, tournament } = Astro.props;
 ---
 
 <div class="my-component">
   <h1>{title}</h1>
   <p>{content}</p>
-  <a href={`/Tournamentdetail/${tournament.id}`}>続きを読む>></a>
+  <a href={`/tournament-detail/${tournament.id}`}>続きを読む>></a>
 </div>
 
 <style>
@@ -34,14 +34,14 @@ const { title, content , tournament} = Astro.props;
   .my-component a {
     width: 176px;
     height: 26px;
-    color: #33CCFF;
+    color: #33ccff;
     position: absolute;
     right: 0px;
     bottom: 0px;
   }
 
-    /* レスポンシブ対応 */
-    @media (max-width: 768px) {
+  /* レスポンシブ対応 */
+  @media (max-width: 768px) {
     .my-component {
       width: 70%; /* 幅を画面いっぱいにする */
       height: auto; /* 高さを自動調整 */

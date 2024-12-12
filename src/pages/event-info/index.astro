@@ -57,7 +57,7 @@ const sortedMonths = Object.keys(groupedEvents).sort((a, b) =>
       <!-- 이벤트 리스트 -->
       <div class="event-list">
         {
-          sortedMonths.map(month => (
+          sortedMonths.map((month) => (
             <div class="month-section">
               <h2 id={month} class="event-month-section-title">
                 {month}
@@ -70,7 +70,7 @@ const sortedMonths = Object.keys(groupedEvents).sort((a, b) =>
                   <div class="event-details">
                     <h2 class="event-title">{event.title}</h2>
                     <p class="event-description">{event.description}</p>
-                    <a href={`/Iventdetail/${event.id}`} class="event-link">
+                    <a href={`/event-detail/${event.id}`} class="event-link">
                       続きを読む&gt;&gt;
                     </a>
                   </div>
@@ -85,7 +85,7 @@ const sortedMonths = Object.keys(groupedEvents).sort((a, b) =>
       <aside class="event-archive">
         <h3>月別アーカイブ</h3>
         {
-          sortedMonths.map(month => (
+          sortedMonths.map((month) => (
             <p class="p-content-sentence-archive-day">
               <a href={`#${month}`}>
                 {month}({groupedEvents[month].length})

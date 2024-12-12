@@ -86,7 +86,7 @@ const admission = responseAdmission.contents[0];
 
         <div class="p-Tournament-information-content">
           {
-            firstThreeTournaments.map(tournament => {
+            firstThreeTournaments.map((tournament) => {
               if (tournament) {
                 return (
                   <TournamentComponent
@@ -99,7 +99,7 @@ const admission = responseAdmission.contents[0];
             })
           }
         </div>
-        <a class="p-Tournament-information-more" href="/Tournamentinformation"
+        <a class="p-Tournament-information-more" href="/tournament-information"
           >さらに表示</a
         >
       </div>
@@ -110,7 +110,7 @@ const admission = responseAdmission.contents[0];
         <h2 class="p-Ivent-detail-title">イベント情報（活動記録）</h2>
         <div class="p-Ivent-detail-content">
           {
-            firstThreeEvents.map(event => {
+            firstThreeEvents.map((event) => {
               if (event) {
                 return (
                   <IventComponent
